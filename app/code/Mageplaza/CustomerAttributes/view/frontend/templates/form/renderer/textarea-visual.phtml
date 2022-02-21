@@ -1,0 +1,51 @@
+<?php
+/**
+ * Mageplaza
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the mageplaza.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.mageplaza.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Mageplaza
+ * @package     Mageplaza_CustomerAttributes
+ * @copyright   Copyright (c) Mageplaza (https://www.mageplaza.com/)
+ * @license     https://www.mageplaza.com/LICENSE.txt
+ */
+
+/* @var $block \Mageplaza\CustomerAttributes\Block\Form\Renderer\Textarea */
+?>
+<?php
+$fieldCssClass = 'field field-' . $block->getHtmlId();
+$fieldCssClass .= $block->isRequired() ? ' required' : '';
+$classVisualRequired = $block->isRequired() ? ' mp-attribute-visual-required' : '';
+?>
+<div class="<?= /* @escapeNotVerified */ $fieldCssClass; ?>">
+    <label class="label"
+           for="<?= $block->getHtmlId() ?>"><span><?= $block->escapeHtml($block->getLabel()) ?></span></label>
+    <div class="control">
+        <textarea id="<?= $block->getHtmlId() ?>" name="<?= $block->getHtmlId() ?>" rows="5"
+                  cols="25" <?php if ($block->getHtmlClass()) : ?> class="<?= $block->getHtmlClass() . $classVisualRequired ?>"<?php endif; ?>><?= $block->getEscapedValue() ?>
+        </textarea>
+    </div>
+</div>
+
+<script type="text/javascript">
+    require([
+        'jquery',
+        'Mageplaza_CustomerAttributes/js/init-editor-content'
+    ], function ($, initEditorContent) {
+        initEditorContent(
+            $('#<?= $block->getHtmlId() ?>'),
+            false,
+            false,
+            <?= /* @noEscape */$block->getTinymceConfig()?>
+        );
+    });
+</script>

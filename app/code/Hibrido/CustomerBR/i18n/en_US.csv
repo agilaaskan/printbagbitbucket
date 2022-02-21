@@ -1,0 +1,24 @@
+"Natural Person","Natural Person"
+"Legal Person","Legal Person"
+"Person Type","Person Type"
+"Tax/VAT Number","Tax/VAT Number"
+"State Registration","State Registration"
+Country,Country
+"State/Province","State/Province"
+"Zip/Postal Code","Zip/Postal Code"
+City,City
+Company,Company
+"First Name","First Name"
+"Last Name","Last Name"
+"Company Name","Company Name"
+"Fantasy Name","Fantasy Name"
+Acquit,Acquit
+Exempt,Exempt
+"Street Address","Street Address"
+Street,Street
+Number,Number
+Complement,Complement
+District,District
+"Phone Number","Phone Number"
+"Invalid CNPJ.","Invalid CNPJ."
+"Invalid CPF.","Invalid CPF."

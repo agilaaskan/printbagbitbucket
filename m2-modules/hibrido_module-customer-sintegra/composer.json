@@ -1,0 +1,17 @@
+{
+    "name": "hibrido/module-customer-sintegra",
+    "description": "Magento 2 Module Customer Sintegra",
+    "type": "magento2-module",
+    "version": "1.0.2",
+    "require": {
+        "hibrido/module-customer-br": "~1.0.0"
+    },
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Hibrido\\CustomerSintegra\\": ""
+        }
+    }
+}

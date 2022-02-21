@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Hibrido. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework-message-queue:etc/consumer.xsd">
+    <consumer
+        name="customerSintegraUpdateCustomerAddressesConsumer"
+        queue="customerSintegra.updateCustomerAddressesTopic"
+        connection="db"
+        maxMessages="100"
+        consumerInstance="Magento\Framework\MessageQueue\Consumer"
+        handler="Hibrido\CustomerSintegra\Model\Queue\UpdateCustomerAddressesConsumer::process"
+    />
+    <consumer
+            name="customerSintegraUpdateOrderAddressesConsumer"
+            queue="customerSintegra.updateOrderAddressesTopic"
+            connection="db"
+            maxMessages="100"
+            consumerInstance="Magento\Framework\MessageQueue\Consumer"
+            handler="Hibrido\CustomerSintegra\Model\Queue\UpdateOrderAddressesConsumer::process"
+    />
+</config>

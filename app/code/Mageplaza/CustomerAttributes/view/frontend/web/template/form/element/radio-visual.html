@@ -1,0 +1,48 @@
+<!--
+/**
+ * Mageplaza
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the mageplaza.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.mageplaza.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Mageplaza
+ * @package     Mageplaza_CustomerAttributes
+ * @copyright   Copyright (c) Mageplaza (https://www.mageplaza.com/)
+ * @license     https://www.mageplaza.com/LICENSE.txt
+ */
+-->
+
+<!-- ko foreach:  { data: options, as: 'item' }-->
+<div class="visual-option">
+    <div class="media" data-bind="html: visual"
+         onclick="jQuery(this).parent().find('input:not(:disabled)').prop( 'checked', true).trigger('click')"></div>
+    <div class="option">
+        <input type="radio" class="radio" data-bind="
+                   checked: $parent.value,
+                   valueUpdate: 'keyup',
+                   attr: {
+                       value: value,
+                       id: $parent.uid + '-' + value,
+                       disabled: $parent.disabled,
+                       name: $parent.inputName
+                   },
+                   hasFocus: $parent.focused">
+
+        <label class="label" data-bind="checked: value, attr: { for: $parent.uid + '-' + value }">
+            <span data-bind="text: $parent.description || label"></span>
+        </label>
+    </div>
+</div>
+<!-- /ko -->
+
+<!-- ko if: notice -->
+<div class="field-note" data-bind="attr: {id: noticeId}"><span data-bind="text: notice"></span></div>
+<!-- /ko -->

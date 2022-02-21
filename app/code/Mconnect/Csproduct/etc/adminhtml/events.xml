@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+	<event name="layout_render_before">
+        <observer name="slider_render" instance="Mconnect\Csproduct\Helper\InitializeModuleObserver" />
+    </event>
+  	<!-- <event name="catalog_product_save_before">
+        <observer name="csproduct_catalog_productsave" instance="Mconnect\Csproduct\Observer\CatalogProductSaveBefore" />
+    </event> -->
+	<event name="customer_save_before">
+        <observer name="customer_save_before_csproduct_observer" instance="Mconnect\Csproduct\Observer\CustomerSaveBefore" />
+    </event>
+	
+	<event name="sales_quote_add_item">
+        <observer name="csproduct_sales_quote_add_item" instance="Mconnect\Csproduct\Observer\SalesQuoteAddItem" />
+    </event>
+	
+	
+</config>

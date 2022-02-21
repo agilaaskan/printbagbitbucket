@@ -1,0 +1,22 @@
+<?php
+/**
+ * Copyright © Hibrido. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+use Hibrido\CustomerBR\Block\Widget\PersonType;
+
+/** @var PersonType $block */
+?>
+
+<div class="field field-hb_person_type required">
+    <label for="hb_person_type" class="label"><span><?= __('Person Type'); ?></span></label>
+    <div class="control">
+        <select name="hb_person_type" id="hb_person_type">
+            <?php foreach ($block->getPersonTypeOptions() as $option) : ?>
+                <?php $selected = ($block->hasHbPersonType() && $block->getHbPersonType() === $option['value']) ? 'selected="selected"' : ''; ?>
+                <option value="<?= $option['value']; ?>" <?= $selected; ?>><?= $option['label']; ?></option>
+            <?php endforeach ?>
+        </select>
+    </div>
+</div>

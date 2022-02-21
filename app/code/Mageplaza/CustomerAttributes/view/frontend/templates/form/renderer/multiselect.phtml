@@ -1,0 +1,40 @@
+<?php
+/**
+ * Mageplaza
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the mageplaza.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.mageplaza.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Mageplaza
+ * @package     Mageplaza_CustomerAttributes
+ * @copyright   Copyright (c) Mageplaza (https://www.mageplaza.com/)
+ * @license     https://www.mageplaza.com/LICENSE.txt
+ */
+
+/* @var $block \Mageplaza\CustomerAttributes\Block\Form\Renderer\Multiselect */
+?>
+<?php
+$fieldCssClass = 'field field-' . $block->getHtmlId();
+$fieldCssClass .= $block->isRequired() ? ' required' : '';
+?>
+<div class="<?= /* @escapeNotVerified */ $fieldCssClass; ?>">
+    <label class="label"
+           for="<?= $block->getHtmlId() ?>"><span><?= $block->escapeHtml($block->getLabel()) ?></span></label>
+    <div class="control">
+        <select id="<?= $block->getHtmlId() ?>"
+                name="<?= $block->getHtmlId('') ?>"<?php if ($block->getHtmlClass()) : ?> class="select <?= $block->getHtmlClass() ?>"<?php endif; ?>
+                multiple="multiple">
+            <?php foreach ($block->getOptions() as $option) : ?>
+                <option value="<?= $block->escapeHtml($option['value']) ?>"<?php if ($block->isValueSelected($option['value'])) : ?> selected="selected"<?php endif; ?>><?= $block->escapeHtml($option['label']) ?></option>
+            <?php endforeach; ?>
+        </select>
+    </div>
+</div>

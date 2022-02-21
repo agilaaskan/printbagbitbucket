@@ -1,0 +1,10 @@
+"Invalid Sintegra Api Operation Mode.","Tipo de operação do Sintegra Api inválido."
+"Required field ""%1"" not present.","O campo requerido ""%1"" não está presente."
+"You can't edit your addresses if you are a Legal Person.","Se você for uma pessoa do tipo PJ, você não pode editar seus endereços, os mesmos estão sincronizados com o Sintegra."
+"Customer does not have hb_person_type or taxvat attribute.","O cliente não possui os atributos hb_person_type ou taxvat."
+"Region not found.","Estado não encontrado."
+"Customer ID not found in Order.","ID do cliente não encontrado no pedido."
+Api,Api
+"Operation Mode","Tipo de operação"
+"Sandbox Access Token","Access Token de Homologação"
+"Production Access Token","Access Token de Produção"

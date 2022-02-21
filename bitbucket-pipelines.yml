@@ -1,0 +1,30 @@
+image: php:7.1-alpine
+
+.default-step: &default-step
+    caches:
+      - composer
+    script:
+      - apk update --no-cache
+      - apk add --no-cache rsync openssh-client
+      - curl -L -o /usr/local/bin/dep https://deployer.org/releases/v6.6.0/deployer.phar
+      - chmod +x /usr/local/bin/dep
+      - cd .deploy/$BITBUCKET_BRANCH/
+      - /usr/local/bin/dep deploy --branch="$BITBUCKET_BRANCH"
+
+pipelines:
+  branches:
+    master:
+      - step:
+          <<: *default-step
+          name: Deploy to production
+          deployment: Production
+    staging:
+      - step:
+          <<: *default-step
+          name: Deploy to staging
+          deployment: Staging
+    alt:
+      - step:
+          <<: *default-step
+          name: Deploy to alt
+          deployment: Alt

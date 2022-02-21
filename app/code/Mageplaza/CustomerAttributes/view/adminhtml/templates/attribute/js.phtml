@@ -1,0 +1,239 @@
+<?php
+/**
+ * Mageplaza
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the mageplaza.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.mageplaza.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Mageplaza
+ * @package     Mageplaza_CustomerAttributes
+ * @copyright   Copyright (c) Mageplaza (https://www.mageplaza.com/)
+ * @license     https://www.mageplaza.com/LICENSE.txt
+ */
+?>
+<script>
+    require([
+        'jquery',
+        'uiRegistry',
+        'Mageplaza_CustomerAttributes/js/init-editor-content',
+        'prototype'
+    ], function (jQuery, registry, initEditorContent) {
+        var frontendInput = $('frontend_input'),
+            isRequired    = $('is_required'),
+            fieldDepend   = $('field_depend'),
+            fieldVisible  = $('is_visible');
+
+        function bindAttributeInputType () {
+            checkOptionsPanelVisibility();
+            switchDefaultValueField();
+        }
+
+        function checkOptionsPanelVisibility () {
+            var selectOptionsPanel = $('manage-options-panel'),
+                visualOptionsPanel = $('swatch-visual-options-panel'),
+                swatchVisualPanel  = jQuery('#swatch-visual-options-panel'),
+                optionsPanel       = jQuery('#manage-options-panel');
+
+            if (frontendInput && selectOptionsPanel && visualOptionsPanel) {
+                hidePanel(selectOptionsPanel);
+                hidePanel(visualOptionsPanel);
+                optionsPanel.removeClass('selected-type-options');
+                swatchVisualPanel.removeClass('selected-type-options');
+                switch ($F('frontend_input')){
+                    case 'select':
+                    case 'multiselect':
+                        showPanel(selectOptionsPanel);
+                        optionsPanel.addClass('selected-type-options');
+                        swatchVisualPanel.addClass('selected-type-options');
+                        break;
+
+                    case 'select_visual':
+                    case 'multiselect_visual':
+                        showPanel(visualOptionsPanel);
+                        optionsPanel.addClass('selected-type-options');
+                        swatchVisualPanel.addClass('selected-type-options');
+                        break;
+                }
+            }
+        }
+
+        function showPanel (elem) {
+            elem.up('.fieldset').show();
+
+            registry.get(elem.id, function () {
+                jQuery('#' + elem.id).trigger('render');
+            });
+        }
+
+        function hidePanel (elem) {
+            elem.up('.fieldset').hide();
+        }
+
+        function switchDefaultValueField () {
+            if (!frontendInput) {
+                return;
+            }
+
+            var defaultValueTextVisibility     = false,
+                defaultValueTextareaVisibility = false,
+                defaultValueContentVisibility  = false,
+                defaultValueDateVisibility     = false,
+                defaultValueYesnoVisibility    = false,
+                useProductImageForSwatch       = false,
+                optionDefaultInputType         = '',
+                inputFileExtensions            = false,
+                inputMaxSizeVisibility         = false;
+
+            isRequired.disable = false;
+            setRowVisibility('is_required', true);
+            setRowVisibility('input_validation', false);
+            setRowVisibility('is_used_in_grid', true);
+            setRowVisibility('is_used_in_sales_order_grid', true);
+
+            switch ($F('frontend_input')){
+                case 'text':
+                    defaultValueTextVisibility = true;
+                    setRowVisibility('input_validation', !$('input_validation').getAttribute('readonly'));
+                    break;
+
+                case 'textarea':
+                    defaultValueTextareaVisibility = true;
+                    break;
+
+                case 'date':
+                    defaultValueDateVisibility = true;
+                    break;
+
+                case 'boolean':
+                    defaultValueYesnoVisibility = true;
+                    break;
+
+                case 'select':
+                    optionDefaultInputType = 'radio';
+                    break;
+
+                case 'select_visual':
+                    optionDefaultInputType   = 'radio';
+                    useProductImageForSwatch = true;
+                    break;
+
+                case 'multiselect':
+                    optionDefaultInputType = 'checkbox';
+                    break;
+
+                case 'multiselect_visual':
+                    optionDefaultInputType   = 'checkbox';
+                    useProductImageForSwatch = true;
+                    break;
+
+                case 'image':
+                    isRequired.disable = true;
+                    setRowVisibility('is_required', false);
+                    defaultValueTextVisibility = false;
+                    inputMaxSizeVisibility     = true;
+                    break;
+
+                case 'file':
+                    isRequired.disable = true;
+                    setRowVisibility('is_required', false);
+                    defaultValueTextVisibility = false;
+                    inputMaxSizeVisibility     = true;
+                    inputFileExtensions        = true;
+                    break;
+
+                case 'textarea_visual':
+                    setRowVisibility('is_used_in_grid', false);
+                    setRowVisibility('is_used_in_sales_order_grid', false);
+                    defaultValueContentVisibility = true;
+                    break;
+            }
+
+            setRowVisibility('default_value_text', defaultValueTextVisibility);
+            setRowVisibility('default_value_textarea', defaultValueTextareaVisibility);
+            setRowVisibility('default_value_date', defaultValueDateVisibility);
+            setRowVisibility('default_value_yesno', defaultValueYesnoVisibility);
+            setRowVisibility('default_value_textarea_visual', defaultValueContentVisibility);
+            setRowVisibility('use_product_image_for_swatch', useProductImageForSwatch);
+            setRowVisibility('max_file_size', inputMaxSizeVisibility);
+            setRowVisibility('file_extensions', inputFileExtensions);
+
+            var elems = [document.getElementsByName('default[]'), document.getElementsByName('defaultvisual[]')];
+            elems.forEach(function (elem) {
+                for (var i = 0; i < elem.length; i++){
+                    elem[i].type = optionDefaultInputType;
+                }
+            });
+        }
+
+        function setRowVisibility (id, isVisible) {
+            if ($(id)) {
+                var td = $(id).parentNode;
+                var tr = $(td.parentNode);
+
+                if (isVisible) {
+                    tr.show();
+                } else {
+                    tr.hide();
+                }
+            }
+        }
+
+        function updateDependFields () {
+            var id    = $F('field_depend'),
+                elems = $('value_depend');
+
+            for (var i = 0; i < elems.length; i++){
+                elems[i].hide();
+
+                if (elems[i].value.substr(0, elems[i].value.indexOf('_')) === id) {
+                    elems[i].show();
+                }
+            }
+        }
+
+        function updateDisplayOptions () {
+            var isVisible = ($F('is_visible') === '1');
+
+            if (fieldVisible.disabled && isVisible) {
+                return;
+            }
+
+            var displayOptions = ['customer_can_edit', 'mp_store_id', 'mp_customer_group'];
+
+            displayOptions.forEach(function (option) {
+                $(option).disabled = !isVisible;
+            });
+        }
+
+        if (frontendInput) {
+            Event.observe(frontendInput, 'change', bindAttributeInputType);
+        }
+
+        if (fieldDepend) {
+            Event.observe(fieldDepend, 'change', updateDependFields);
+        }
+
+        if (fieldVisible) {
+            Event.observe(fieldVisible, 'change', updateDisplayOptions);
+        }
+
+        bindAttributeInputType();
+        updateDependFields();
+        updateDisplayOptions();
+
+        initEditorContent(
+            jQuery('#default_value_textarea_visual'),
+            false,
+            false,
+            <?= /* @noEscape */ $block->getTinymceConfig()?>
+        );
+    });
+</script>

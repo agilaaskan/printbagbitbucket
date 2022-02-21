@@ -1,0 +1,15 @@
+[16-Nov-2020 13:00:51 UTC] PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted (tried to allocate 20480 bytes) in /home/speedboost/printbag.speedboost.xyz/vendor/wikimedia/less.php/lib/Less/Parser.php on line 2364
+[23-Nov-2020 08:14:36 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getPostContent() on null in /home/speedboost/printbag.speedboost.xyz/app/code/Mageplaza/Blog/view/frontend/templates/widget/posts.phtml:62
+Stack trace:
+#0 /home/speedboost/printbag.speedboost.xyz/vendor/magento/framework/View/TemplateEngine/Php.php(59): include()
+#1 /home/speedboost/printbag.speedboost.xyz/vendor/magento/framework/Interception/Interceptor.php(58): Magento\Framework\View\TemplateEngine\Php->render(Object(Mageplaza\Blog\Block\Widget\Posts), '/home/speedboos...', Array)
+#2 /home/speedboost/printbag.speedboost.xyz/vendor/magento/framework/Interception/Interceptor.php(138): Magento\Framework\View\TemplateEngine\Php\Interceptor->___callParent('render', Array)
+#3 /home/speedboost/printbag.speedboost.xyz/vendor/magento/framework/Interception/Interceptor.php(153): Magento\Framework\View\TemplateEngine\Php\Interceptor->Magento\Framework\Interception\{closure}(Object(Mageplaza\Blog\Block\Widget\Posts), '/home/speedboos...', Array)
+#4 /home/speedboost/printbag.sp in /home/speedboost/printbag.speedboost.xyz/app/code/Mageplaza/Blog/view/frontend/templates/widget/posts.phtml on line 62
+[23-Nov-2020 08:16:24 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getPostContent() on null in /home/speedboost/printbag.speedboost.xyz/app/code/Mageplaza/Blog/view/frontend/templates/widget/posts.phtml:62
+Stack trace:
+#0 /home/speedboost/printbag.speedboost.xyz/vendor/magento/framework/View/TemplateEngine/Php.php(59): include()
+#1 /home/speedboost/printbag.speedboost.xyz/vendor/magento/framework/Interception/Interceptor.php(58): Magento\Framework\View\TemplateEngine\Php->render(Object(Mageplaza\Blog\Block\Widget\Posts), '/home/speedboos...', Array)
+#2 /home/speedboost/printbag.speedboost.xyz/vendor/magento/framework/Interception/Interceptor.php(138): Magento\Framework\View\TemplateEngine\Php\Interceptor->___callParent('render', Array)
+#3 /home/speedboost/printbag.speedboost.xyz/vendor/magento/framework/Interception/Interceptor.php(153): Magento\Framework\View\TemplateEngine\Php\Interceptor->Magento\Framework\Interception\{closure}(Object(Mageplaza\Blog\Block\Widget\Posts), '/home/speedboos...', Array)
+#4 /home/speedboost/printbag.sp in /home/speedboost/printbag.speedboost.xyz/app/code/Mageplaza/Blog/view/frontend/templates/widget/posts.phtml on line 62

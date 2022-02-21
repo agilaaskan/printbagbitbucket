@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Mageplaza
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the mageplaza.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.mageplaza.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Mageplaza
+ * @package     Mageplaza_CustomerAttributes
+ * @copyright   Copyright (c) Mageplaza (https://www.mageplaza.com/)
+ * @license     https://www.mageplaza.com/LICENSE.txt
+ */
+ -->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="Mageplaza_CustomerAttributes::css/style.css"/>
+    </head>
+    <body>
+        <referenceContainer name="content">
+            <block class="Magento\Framework\View\Element\Template" name="customer_form_template">
+                <block class="Mageplaza\CustomerAttributes\Block\Form\Renderer\Text" name="customer_form_template_text" as="text" template="Mageplaza_CustomerAttributes::form/renderer/text.phtml"/>
+                <block class="Mageplaza\CustomerAttributes\Block\Form\Renderer\Textarea" name="customer_form_template_textarea" as="textarea" template="Mageplaza_CustomerAttributes::form/renderer/textarea.phtml"/>
+                <block class="Mageplaza\CustomerAttributes\Block\Form\Renderer\Date" name="customer_form_template_date" as="date" template="Mageplaza_CustomerAttributes::form/renderer/date.phtml"/>
+                <block class="Mageplaza\CustomerAttributes\Block\Form\Renderer\Boolean" name="customer_form_template_boolean" as="boolean" template="Mageplaza_CustomerAttributes::form/renderer/boolean.phtml"/>
+                <block class="Mageplaza\CustomerAttributes\Block\Form\Renderer\Select" name="customer_form_template_select" as="select" template="Mageplaza_CustomerAttributes::form/renderer/select.phtml"/>
+                <block class="Mageplaza\CustomerAttributes\Block\Form\Renderer\Multiselect" name="customer_form_template_multiselect" as="multiselect" template="Mageplaza_CustomerAttributes::form/renderer/multiselect.phtml"/>
+                <block class="Mageplaza\CustomerAttributes\Block\Form\Renderer\SelectVisual" name="customer_form_template_select_visual" as="select_visual" template="Mageplaza_CustomerAttributes::form/renderer/select-visual.phtml"/>
+                <block class="Mageplaza\CustomerAttributes\Block\Form\Renderer\MultiselectVisual" name="customer_form_template_multiselect_visual" as="multiselect_visual" template="Mageplaza_CustomerAttributes::form/renderer/multiselect-visual.phtml"/>
+                <block class="Mageplaza\CustomerAttributes\Block\Form\Renderer\Image" name="customer_form_template_image" as="image" template="Mageplaza_CustomerAttributes::form/renderer/image.phtml"/>
+                <block class="Mageplaza\CustomerAttributes\Block\Form\Renderer\File" name="customer_form_template_file" as="file" template="Mageplaza_CustomerAttributes::form/renderer/file.phtml"/>
+                <block class="Mageplaza\CustomerAttributes\Block\Form\Renderer\TextareaVisual" name="customer_form_template_textarea_visual" as="textarea_visual" template="Mageplaza_CustomerAttributes::form/renderer/textarea-visual.phtml"/>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

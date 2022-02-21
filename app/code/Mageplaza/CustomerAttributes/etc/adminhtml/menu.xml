@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Mageplaza
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the mageplaza.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.mageplaza.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Mageplaza
+ * @package     Mageplaza_CustomerAttributes
+ * @copyright   Copyright (c) Mageplaza (https://www.mageplaza.com/)
+ * @license     https://www.mageplaza.com/LICENSE.txt
+ */
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Mageplaza_CustomerAttributes::mp_customer_attributes" title="Attributes" translate="title" module="Mageplaza_CustomerAttributes" sortOrder="50" parent="Magento_Customer::customer" resource="Mageplaza_CustomerAttributes::mp_customer_attributes"/>
+        <add id="Mageplaza_CustomerAttributes::customer_attributes" title="Customer" translate="title" module="Mageplaza_CustomerAttributes" sortOrder="10" parent="Mageplaza_CustomerAttributes::mp_customer_attributes" action="customer/attribute/" resource="Mageplaza_CustomerAttributes::customer_attributes"/>
+        <add id="Mageplaza_CustomerAttributes::customer_address_attributes" title="Customer Address" translate="title" module="Mageplaza_CustomerAttributes" sortOrder="20" parent="Mageplaza_CustomerAttributes::mp_customer_attributes" action="customer/address_attribute/" resource="Mageplaza_CustomerAttributes::customer_address_attributes"/>
+    </menu>
+</config>

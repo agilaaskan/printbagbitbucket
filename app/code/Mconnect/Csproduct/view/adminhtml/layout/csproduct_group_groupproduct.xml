@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<layout xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/layout_generic.xsd">
+	
+    <container name="root" label="Root">
+		
+		<block class="Magento\Framework\View\Element\Template" name="csgroup_import" template="Mconnect_Csproduct::csproduct/csgroupimport.phtml"/>
+		
+		<block class="Magento\Framework\View\Element\Template" name="csproduct_import" template="Mconnect_Csproduct::csproduct/csproductimport.phtml"/>
+		
+	
+        <block class="Mconnect\Csproduct\Block\Adminhtml\Group\Edit\Tab\Groupproducts" name="csproduct.edit.tab.groupproducts"/>		
+        <block class="Magento\Backend\Block\Widget\Grid\Serializer" name="customerproduct_grid_serializer">
+            <arguments>
+                <argument name="grid_block" xsi:type="string">csproduct.edit.tab.groupproducts</argument>
+                <argument name="callback" xsi:type="string">getSelectedProducts</argument>
+                <argument name="input_element_name" xsi:type="string">groupproduct_ids</argument>
+                <!-- <argument name="reload_param_name" xsi:type="string">products_listing</argument> -->
+				<argument name="reload_param_name" xsi:type="string">selected_products</argument>
+            </arguments>
+        </block>
+		
+		<block class="Magento\Framework\View\Element\Template" name="csgroupproductscriptjs_grid_scriptjs" template="Mconnect_Csproduct::csproduct/csgroupproductscriptjs.phtml"/>	
+		
+    </container>
+</layout>

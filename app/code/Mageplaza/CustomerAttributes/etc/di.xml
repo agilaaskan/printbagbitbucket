@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Mageplaza
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the mageplaza.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.mageplaza.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Mageplaza
+ * @package     Mageplaza_CustomerAttributes
+ * @copyright   Copyright (c) Mageplaza (https://www.mageplaza.com/)
+ * @license     https://www.mageplaza.com/LICENSE.txt
+ */
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="customer_attribute_grid_data_source" xsi:type="string">Mageplaza\CustomerAttributes\Model\ResourceModel\Attribute\Collection</item>
+                <item name="customer_address_attribute_grid_data_source" xsi:type="string">Mageplaza\CustomerAttributes\Model\ResourceModel\Attribute\Address\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Magento\Customer\Model\Attribute">
+        <plugin name="mpca_reindex_customer_grid" type="Mageplaza\CustomerAttributes\Model\Plugin\Customer\Attribute"/>
+    </type>
+    <type name="Magento\Eav\Model\Entity\Attribute">
+        <plugin name="mpca_save_additional_data" type="Mageplaza\CustomerAttributes\Model\Plugin\Eav\Attribute"/>
+    </type>
+    <type name="Magento\Customer\Model\Metadata\Form">
+        <plugin name="mpca_format_data_before_validating" type="Mageplaza\CustomerAttributes\Model\Plugin\Customer\Metadata\Form"/>
+    </type>
+    <type name="Magento\Quote\Model\Quote\Address\CustomAttributeList">
+        <plugin name="mpca_add_attribute_to_address" type="Mageplaza\CustomerAttributes\Model\Plugin\Quote\Address\CustomAttributeList"/>
+    </type>
+    <type name="Magento\Customer\Model\Address\CustomAttributeList">
+        <plugin name="mpca_add_attribute_to_customer" type="Mageplaza\CustomerAttributes\Model\Plugin\Customer\Address\CustomAttributeList"/>
+    </type>
+    <type name="Magento\Quote\Model\Quote\Address">
+        <plugin name="mpca_convert_quote_address_to_customer_address" type="Mageplaza\CustomerAttributes\Model\Plugin\Customer\Address\ConvertQuoteAddressToCustomerAddress"/>
+    </type>
+    <type name="Magento\Quote\Model\Quote\Address\ToOrderAddress">
+        <plugin name="mpca_convert_quote_address_to_order_address" type="Mageplaza\CustomerAttributes\Model\Plugin\Customer\Address\ConvertQuoteAddressToOrderAddress"/>
+    </type>
+    <type name="Magento\Eav\Model\Attribute\Data\AbstractData">
+        <plugin name="mpca_bypass_validate_value" type="Mageplaza\CustomerAttributes\Model\Plugin\Eav\Attribute\AbstractData"/>
+    </type>
+    <type name="Magento\Eav\Model\Entity\Attribute\Backend\AbstractBackend">
+        <plugin name="mpca_bypass_validate" type="Mageplaza\CustomerAttributes\Model\Plugin\Eav\Attribute\AbstractBackend"/>
+    </type>
+    <type name="Magento\Quote\Model\QuoteValidator">
+        <plugin name="mpca_set_should_ignore_validation_quote" type="Mageplaza\CustomerAttributes\Model\Plugin\Quote\QuoteValidator"/>
+    </type>
+    <type name="Magento\Quote\Model\CustomerManagement">
+        <plugin name="mp_ignore_shipping_validate_when_virtual" type="Mageplaza\CustomerAttributes\Model\Plugin\Quote\CustomerManagement"/>
+    </type>
+    <type name="Magento\Eav\Model\Attribute\Data\File">
+        <plugin name="mp_validateValue" type="Mageplaza\CustomerAttributes\Model\Plugin\Eav\Model\Attribute\Data\File"/>
+    </type>
+
+    <preference for="Magento\Customer\Model\Metadata\Form\File" type="Mageplaza\CustomerAttributes\Model\Metadata\Form\File"/>
+    <preference for="Magento\Customer\Model\Metadata\Form\Image" type="Mageplaza\CustomerAttributes\Model\Metadata\Form\Image"/>
+
+    <preference for="Mageplaza\CustomerAttributes\Api\AddressAttributesRepositoryInterface" type="Mageplaza\CustomerAttributes\Model\AddressAttributesRepository"/>
+    <preference for="Mageplaza\CustomerAttributes\Api\Data\FileResultInterface" type="Mageplaza\CustomerAttributes\Model\FileResult"/>
+
+    <preference for="Mageplaza\CustomerAttributes\Api\Data\AttributeMetadataInterface" type="Mageplaza\CustomerAttributes\Model\Data\AttributeMetadata"/>
+    <preference for="Mageplaza\CustomerAttributes\Api\CustomerMetadataInterface" type="Mageplaza\CustomerAttributes\Model\CustomerMetadata"/>
+    <preference for="Mageplaza\CustomerAttributes\Api\AddressMetadataInterface" type="Mageplaza\CustomerAttributes\Model\AddressMetadata"/>
+</config>

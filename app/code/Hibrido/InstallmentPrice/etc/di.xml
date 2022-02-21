@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Hibrido. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Hibrido\InstallmentPrice\Api\Data\ProductRender\InstallmentPriceInterface" type="Hibrido\InstallmentPrice\Model\ProductRender\InstallmentPrice"/>
+    <type name="Magento\Catalog\Block\Product\ListProduct">
+        <plugin name="addInstallmentPriceOnProductListing" type="Hibrido\InstallmentPrice\Plugin\ListProduct"/>
+    </type>
+    <type name="Magento\CatalogSearch\Block\SearchResult\ListProduct">
+        <plugin name="addInstallmentPriceOnSearchProductListing" type="Hibrido\InstallmentPrice\Plugin\ListProduct"/>
+    </type>
+    <type name="Magento\CatalogWidget\Block\Product\ProductsList">
+        <plugin name="addInstallmentPriceOnProductListWidget" type="Hibrido\InstallmentPrice\Plugin\ProductList"/>
+    </type>
+    <type name="Magento\Catalog\Block\Product\ProductList\Related">
+        <plugin name="addInstallmentPriceOnProductListRelated" type="Hibrido\InstallmentPrice\Plugin\Related"/>
+    </type>
+    <type name="Magento\Catalog\Block\Product\ProductList\Upsell">
+        <plugin name="addInstallmentPriceOnProductListUpsell" type="Hibrido\InstallmentPrice\Plugin\Upsell"/>
+    </type>
+    <type name="Magento\TargetRule\Block\Catalog\Product\ProductList\Related">
+        <plugin name="addInstallmentPriceOnProductListRelatedTargetRule" type="Hibrido\InstallmentPrice\Plugin\RelatedTargetRule"/>
+    </type>
+    <type name="Magento\TargetRule\Block\Catalog\Product\ProductList\Upsell">
+        <plugin name="addInstallmentPriceOnProductListRelatedTargetRule" type="Hibrido\InstallmentPrice\Plugin\UpsellTargetRule"/>
+    </type>
+    <type name="Magento\Catalog\Block\Product\Compare\ListCompare">
+        <plugin name="addInstallmentPriceOnListCompare" type="Hibrido\InstallmentPrice\Plugin\ListCompare"/>
+    </type>
+    <type name="Magento\Catalog\Ui\DataProvider\Product\ProductRenderCollectorComposite">
+        <arguments>
+            <argument name="productProviders" xsi:type="array">
+                <item name="installment_price" xsi:type="object">\Hibrido\InstallmentPrice\Ui\DataProvider\Product\Listing\Collector\InstallmentPrice</item>
+            </argument>
+        </arguments>
+    </type>
+</config>

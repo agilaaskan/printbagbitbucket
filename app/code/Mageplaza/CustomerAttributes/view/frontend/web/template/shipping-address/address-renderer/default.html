@@ -1,0 +1,45 @@
+<!--
+/**
+ * Mageplaza
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the mageplaza.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.mageplaza.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Mageplaza
+ * @package     Mageplaza_CustomerAttributes
+ * @copyright   Copyright (c) Mageplaza (https://www.mageplaza.com/)
+ * @license     https://www.mageplaza.com/LICENSE.txt
+ */
+-->
+
+<div class="shipping-address-item" css="'selected-item' : isSelected() , 'not-selected-item':!isSelected()">
+    <text args="address().prefix"/> <text args="address().firstname"/> <text args="address().middlename"/>
+    <text args="address().lastname"/> <text args="address().suffix"/><br/>
+    <text args="_.values(address().street).join(', ')"/><br/>
+    <text args="address().city "/>, <span text="address().region"></span> <text args="address().postcode"/><br/>
+    <text args="getCountryName(address().countryId)"/><br/>
+    <a if="address().telephone" attr="'href': 'tel:' + address().telephone" text="address().telephone"></a><br/>
+
+    <each args="data: address().customAttributes, as: 'element'">
+        <text args="$parent.getAttrData(element)"/><br if="$parent.getAttrData(element)"/>
+    </each>
+
+    <button visible="address().isEditable()" type="button"
+            class="action edit-address-link"
+            click="editAddress">
+        <span translate="'Edit'"></span>
+    </button>
+    <!-- ko if: (!isSelected()) -->
+    <button type="button" click="selectAddress" class="action action-select-shipping-item">
+        <span translate="'Ship Here'"></span>
+    </button>
+    <!-- /ko -->
+</div>

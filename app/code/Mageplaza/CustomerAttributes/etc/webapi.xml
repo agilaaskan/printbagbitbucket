@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Mageplaza
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageplaza.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.mageplaza.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Mageplaza
+ * @package     Mageplaza_CustomerAttributes
+ * @copyright   Copyright (c) Mageplaza (https://www.mageplaza.com/)
+ * @license     https://www.mageplaza.com/LICENSE.txt
+ */
+-->
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
+    <route url="/V1/guest-carts/:cartId/mp-customer-address-attributes/:addressType/upload" method="POST">
+        <service class="Mageplaza\CustomerAttributes\Api\AddressAttributesRepositoryInterface" method="guestUpload"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+    <route url="/V1/carts/mine/mp-customer-address-attributes/:addressType/upload" method="POST">
+        <service class="Mageplaza\CustomerAttributes\Api\AddressAttributesRepositoryInterface" method="upload"/>
+        <resources>
+            <resource ref="self"/>
+        </resources>
+        <data>
+            <parameter name="cartId" force="true">%cart_id%</parameter>
+        </data>
+    </route>
+    <!-- Customer -->
+    <route url="/V1/mpCustomerAttributes/customer/attribute/:attributeCode" method="GET">
+        <service class="Mageplaza\CustomerAttributes\Api\CustomerMetadataInterface" method="getAttribute"/>
+        <resources>
+            <resource ref="Magento_Customer::customer"/>
+        </resources>
+    </route>
+    <route url="/V1/mpCustomerAttributes/customer" method="GET">
+        <service class="Mageplaza\CustomerAttributes\Api\CustomerMetadataInterface" method="getAllAttributes"/>
+        <resources>
+            <resource ref="Magento_Customer::customer"/>
+        </resources>
+    </route>
+    <!-- Customer Address -->
+    <route url="/V1/mpCustomerAttributes/customerAddress/attribute/:attributeCode" method="GET">
+        <service class="Mageplaza\CustomerAttributes\Api\AddressMetadataInterface" method="getAttribute"/>
+        <resources>
+            <resource ref="Magento_Customer::customer"/>
+        </resources>
+    </route>
+    <route url="/V1/mpCustomerAttributes/customerAddress" method="GET">
+        <service class="Mageplaza\CustomerAttributes\Api\AddressMetadataInterface" method="getAllAttributes"/>
+        <resources>
+            <resource ref="Magento_Customer::customer"/>
+        </resources>
+    </route>
+</routes>

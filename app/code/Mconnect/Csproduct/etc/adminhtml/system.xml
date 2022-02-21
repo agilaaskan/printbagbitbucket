@@ -1,0 +1,115 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+       <tab id="mconnect" translate="label" sortOrder="300">
+            <label>M-Connect Media</label>
+        </tab>
+		<section id="mconnect_csproduct" translate="label" type="text" sortOrder="140" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Customer Specific Product (Multi Store)</label>
+            <tab>mconnect</tab>            
+            <resource>Mconnect_Csproduct::config_csproduct</resource>	
+<group id="active" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+				<label>Licence Key Activation</label>
+				<field id="licence_key" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Licence Key</label>					
+				</field>
+				<field id="serial_key" translate="label" type="text" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Serial Key</label>					
+				</field>
+			</group>			
+			<group id="general" translate="label" type="text" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1">
+				<label>General Setting (For Multi Store)</label>
+				<field id="active" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Enable/Disable</label>
+					<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+				</field>
+				
+				<field id="cs_category" translate="label" type="multiselect" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Select Category</label>
+					<can_be_empty>1</can_be_empty>					
+					<source_model>Mconnect\Csproduct\Model\Config\Source\Categorylist</source_model>
+				</field>
+				
+				
+				
+				<field id="hide_restrict_categ_on_front" translate="label" type="select" sortOrder="3" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Hide Restricted category on front menu</label>
+					<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+				</field>
+				
+				
+				<field id="login_customer" translate="label" type="select" sortOrder="4" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label> Only login customer can see product</label>
+					<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+				</field>
+				<field id="after_login" translate="label" type="select" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>After login redirect to</label>					
+					<source_model>Mconnect\Csproduct\Model\Config\Source\AfterLogin</source_model>
+				</field>
+				<field id="login_redirect_message" translate="label" type="text" sortOrder="6" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Login Required Message</label>
+				</field>
+				
+				
+				
+				<field id="no_index_no_follow_for_restricted_products" translate="label" type="select" sortOrder="7" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Disable Web crawler for restricted products</label>					
+					<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+				</field>
+				
+				<field id="priority_index" translate="label" type="select" sortOrder="8" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Which Price are Priority</label>					
+					<source_model>Mconnect\Csproduct\Model\Config\Source\PriorityIndex</source_model>
+				</field>
+							
+				
+				<field id="hide_price_for_guest_user" translate="label" type="select" sortOrder="9" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Hide Price For Guest User</label>					
+					<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+				</field>
+				
+				<field id="user_login_text" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">			
+					<label>User Login Text</label>
+					 <comment><![CDATA[
+                       add class "withReferralUrl" <br> Ex. &lt;a href="#" class="withReferralUrl"&gt;login&lt;/a&gt;
+                    ]]></comment>										
+					<depends>
+						<field id="hide_price_for_guest_user">1</field>
+					</depends>
+				</field>
+				
+				<field id="where_display_message" translate="label" type="multiselect" sortOrder="11" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Display Login Text On</label>
+					<depends>
+						<field id="hide_price_for_guest_user">1</field>
+					</depends>
+					<source_model>Mconnect\Csproduct\Model\Config\Source\DisplayMessageListPage</source_model>
+				</field>
+				
+				<field id="login_text_css" translate="label" type="textarea" sortOrder="12" showInDefault="1" showInWebsite="1" showInStore="1">			
+					<label>Login Text Css</label>				
+					<depends>
+						<field id="hide_price_for_guest_user">1</field>
+					</depends>
+				</field>			
+				
+			</group>
+			
+			<!-- <group id="cs_customer" translate="label" type="text" sortOrder="3" showInDefault="1" showInWebsite="1" showInStore="1">
+				<label>Customer Dashboard</label>
+				<field id="display_on_dashboard" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Customer Product Display On Dashboard</label>
+					<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+				</field>
+				
+				<field id="customer_products_link_label" translate="label" type="text" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Customer Products Link Label</label>	
+					<depends>
+						<field id="display_on_dashboard">1</field>
+					</depends>
+				</field>
+			</group> -->
+        </section>       
+    </system>
+</config>

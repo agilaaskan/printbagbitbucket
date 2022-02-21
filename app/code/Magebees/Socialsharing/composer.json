@@ -1,0 +1,26 @@
+{
+    "name": "magebees/module-socialsharing",
+    "description": "Social Sharing Extension for Magento2",
+    "type": "magento2-module",
+    "license": "proprietary",
+    "authors": [
+        {
+            "email": "info@mage2gen.com",
+            "name": "Mage2Gen"
+        },
+        {
+            "email": "steev.smeeth@gmail.com",
+            "name": "Steev Smeeth"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Magebees\\Socialsharing\\": ""
+        }
+    }
+}

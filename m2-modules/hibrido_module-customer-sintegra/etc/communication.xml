@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Hibrido. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Communication/etc/communication.xsd">
+    <topic name="customerSintegra.updateCustomerAddressesTopic" request="string">
+        <handler name="customerSintegraUpdateCustomerAddressesConsumer" type="Hibrido\CustomerSintegra\Model\Queue\UpdateCustomerAddressesConsumer" method="process"/>
+    </topic>
+    <topic name="customerSintegra.updateOrderAddressesTopic" request="string">
+        <handler name="customerSintegraUpdateOrderAddressesConsumer" type="Hibrido\CustomerSintegra\Model\Queue\UpdateOrderAddressesConsumer" method="process"/>
+    </topic>
+</config>

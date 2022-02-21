@@ -1,0 +1,53 @@
+<!--
+/**
+ * Copyright © Hibrido. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<div class="installment-price">
+    <!-- we need to fool the installment price component -->
+    <span data-bind="attr: { id: 'final-price-selector-' + $row().id }" hidden>
+        <span class="price-final_price">
+            <span class="price-wrapper" data-bind="attr: { 'data-price-amount': $row().price_info.final_price }"></span>
+        </span>
+    </span>
+
+    <!-- installment price container -->
+    <div css="'price-container price-installment_price-' + $row().id" data-bind="mageInit: {
+        'Hibrido_InstallmentPrice/js/installment-price-box': {
+            'interest': {
+                'on': true,
+                'initialPercentage': getConfigInterestInitialPercentage($row()),
+                'incrementalPercentage': getConfigInterestIncrementalPercentage($row()),
+                'priceQuote': getConfigInterestPriceQuote($row())
+            },
+            'installment': {
+                'number': getConfigInstallmentNumber($row()),
+                'priceTemplate': '#installment-price-template-' + $row().id,
+                'show': {
+                    'onlyLastOne': getConfigInstallmentShowOnlyLastOne($row())
+                }
+            },
+            'finalPriceSelector': '#final-price-selector-' + $row().id,
+            'priceFormat': getConfigPriceFormat($row())
+        }
+    }"></div>
+
+    <!-- installment price template -->
+    <script data-bind="attr: { id: 'installment-price-template-' + $row().id }" type="text/x-magento-template">
+        <span class="price-container">
+            <span data-price-amount="<%- installment.price %>">
+                <% if (installment.qty == 1) { %>
+                    <!-- ko text: translateOneInstallment() --><!-- /ko -->
+                <% } else { %>
+                    <% if (installment.hasInterest) { %>
+                        <!-- ko text: translateInstallmentsWithInterest() --><!-- /ko -->
+                    <% } else { %>
+                        <!-- ko text: translateInstallmentsWithoutInterest() --><!-- /ko -->
+                    <% } %>
+                <% } %>
+            </span>
+        </span>
+    </script>
+</div>
+

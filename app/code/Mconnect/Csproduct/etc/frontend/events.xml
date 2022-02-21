@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+
+	<!-- checking loing of categoty  -->
+	
+	<event name="catalog_block_product_list_collection">
+		<observer name="csproduct_catalog_block_product_list_collection" instance="Mconnect\Csproduct\Observer\CatalogBlockProductListCollection" />
+	</event>
+	
+	
+	<event name="catalog_controller_product_view">
+		<observer name="csproduct_catalog_controller_product_view" instance="Mconnect\Csproduct\Observer\CatalogControllerProductView" />
+	</event>
+	
+	<event name="catalog_category_collection_load_after">
+		<observer name="csproduct_catalog_category_collection_load_after" instance="Mconnect\Csproduct\Observer\CatalogCategoryCollectionLoadAfter" />
+	</event>
+	
+	
+	<event name="catalog_product_collection_apply_limitations_after">
+		<observer name="csproduct_catalog_product_collection_apply_limitations_after" instance="Mconnect\Csproduct\Observer\CatalogProductCollectionApplyLimitationsAfter"  />
+	</event>
+	
+		
+	<event name="layout_generate_blocks_after">
+		<observer name="csproduct_layout_generate_blocks_after" instance="Mconnect\Csproduct\Observer\LayoutGenerateBlocksAfter" />
+		
+	</event>
+	
+	<!-- price change of list page -->
+	
+	<event name="catalog_product_collection_load_after">
+		<observer name="csproduct_catalog_product_collection_load_after" instance="Mconnect\Csproduct\Observer\CatalogProductCollectionLoadAfter" />		
+	</event> 
+	
+	<!-- price change of detail page -->
+	
+	 <event name="catalog_product_get_final_price">
+		<observer name="csproduct_catalog_product_get_final_price" instance="Mconnect\Csproduct\Observer\CatalogProductGetFinalprice" />		
+	</event> 
+	
+	<!-- price change of Card -->
+	
+	<event name="checkout_cart_product_add_after">
+        <observer name="csproduct_checkout_cart_product_add_after" instance="Mconnect\Csproduct\Observer\CheckoutCartProductAddAfter" />
+    </event>
+	 
+    <!-- Event for update add to cart -->
+   <event name="checkout_cart_product_update_after">
+        <observer name="csproduct_checkout_cart_product_update_after" instance="Mconnect\Csproduct\Observer\CheckoutCartProductAddAfter"/>
+    </event> 	
+	
+</config>

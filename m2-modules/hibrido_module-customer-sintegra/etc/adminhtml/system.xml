@@ -1,0 +1,40 @@
+<?xml version="1.0" ?>
+<!--
+/**
+ * Copyright © Hibrido. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="sintegra" sortOrder="110" showInDefault="1" showInWebsite="0" showInStore="0">
+            <label>Sintegra</label>
+            <tab>service</tab>
+            <resource>Hibrido_CustomerSintegra::config</resource>
+            <group id="api" translate="label" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>Api</label>
+                <field id="mode" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Operation Mode</label>
+                    <options>
+                        <option label="Sandbox">sandbox</option>
+                        <option label="Production">production</option>
+                    </options>
+                </field>
+                <field id="sandbox_access_token" translate="label" type="obscure" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Sandbox Access Token</label>
+                    <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
+                    <depends>
+                        <field id="mode">sandbox</field>
+                    </depends>
+                </field>
+                <field id="production_access_token" translate="label" type="obscure" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Production Access Token</label>
+                    <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
+                    <depends>
+                        <field id="mode">production</field>
+                    </depends>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

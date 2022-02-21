@@ -1,0 +1,32 @@
+<?php
+$_helper = $this->helper('Mconnect\Csproduct\Helper\Data');
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+
+$hidePrice=$_helper->getConfig('mconnect_csproduct/general/hide_price_for_guest_user');
+$httpContext=$objectManager->get('Magento\Framework\App\Http\Context');			
+$isLoggedIn=$httpContext->getValue(\Magento\Customer\Model\Context::CONTEXT_AUTH);
+
+$isEnable=$_helper->getConfig('mconnect_csproduct/general/active');		
+$css='';
+if(!$isLoggedIn && $hidePrice && $isEnable){
+
+$css=$_helper->getConfig('mconnect_csproduct/general/login_text_css');
+
+$urlInterface=$objectManager->get('\Magento\Framework\UrlInterface');
+$redirectUrl = $urlInterface->getCurrentUrl();
+$returnUrl = $urlInterface->getUrl('customer/account/login',  array('referer' => base64_encode($redirectUrl)) );
+
+?>
+<script>
+require(['jquery'],
+	function($){ 		
+	$(document).on('click','.withReferralUrl',function(event){						
+		event.preventDefault();
+		 location.href = '<?php echo $returnUrl; ?>';																	
+	});	
+});	
+</script>
+<?php
+}
+echo '<style>'.$css.'</style>';
+?>

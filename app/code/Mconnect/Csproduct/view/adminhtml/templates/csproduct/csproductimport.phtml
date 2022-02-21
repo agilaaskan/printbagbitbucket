@@ -1,0 +1,34 @@
+<?php $getBaseUrl=$block->getBaseUrl(); ?>
+<div class="csp-entry-edit csp-followproductsfromgroup" style="display:none">
+	<div class="csp-entry-edit-head">
+		<h4 class="csp-icon-head csp-title">Import Customer specific Product Csv File</h4>
+	</div>
+
+	<div class="admin__fieldset-wrapper-content" >
+		<fieldset class="admin__fieldset">
+			<div class="admin__field">   
+				<label class="admin__field-label">
+					<span>Import Customer specific Product Csv File</span>
+				</label>
+				<div class="admin__field-control">
+				<input type="file" name="csproduct_import_file">				
+					
+				</div>
+			</div>
+		</fieldset>
+		
+		<fieldset class="admin__fieldset">
+			<div class="fieldset fieldset-wide">
+				<div class="hor-scroll">	
+					<div class="import-guideline">
+						<div>Click <a href="<?php echo $getBaseUrl ?>pub/media/csproductfile/importcustomerspecificproductcsvfileM2.csv">Sample CSV</a> for csv data format</div>	
+						<div>Click <a href="<?php echo $getBaseUrl ?>pub/media/csproductfile/import-guidelines.doc">CSV import guideline</a> for csv import guideline</div>	
+					</div>
+				</div>
+			</div>
+		</fieldset>
+	
+    </div>
+	
+</div>
+

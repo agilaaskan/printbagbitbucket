@@ -1,0 +1,14 @@
+<div class="category-slider owl-carousel owl-theme owl-carousel owl-theme owl-responsive-1000 owl-center owl-loaded">
+<?php 
+    echo $this->getLayout()
+    ->createBlock('Magento\Cms\Block\Block')
+    ->setBlockId('liked-block')
+    ->toHtml(); ?>
+</div>
+<div class="newsletter-subscribe">
+<?php echo $this->getLayout()
+            ->createBlock('Magento\Cms\Block\Block')
+            ->setBlockId('newsleter-block')
+            ->toHtml(); 
+ ?>
+ </div>

@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <mconnect_csproduct>	
+            <general>
+                <active>1</active>
+				<hide_restrict_categ_on_front>1</hide_restrict_categ_on_front>
+				<login_customer>1</login_customer>							
+			</general>			
+        </mconnect_csproduct>
+    </default>
+</config>

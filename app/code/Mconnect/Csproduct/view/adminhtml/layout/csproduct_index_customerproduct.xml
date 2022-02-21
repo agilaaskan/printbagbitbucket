@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<layout xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/layout_generic.xsd">
+    <container name="root" label="Root">
+	
+		<block class="Magento\Framework\View\Element\Template" name="csp_enable_grid" template="Mconnect_Csproduct::csproduct/csproduct.phtml"/>
+		
+		
+        <block class="Mconnect\Csproduct\Block\Adminhtml\Product\Edit\Tab\Customerproduct" name="csproduct.edit.tab.customerproduct"/>
+        <block class="Magento\Backend\Block\Widget\Grid\Serializer" name="customerproduct_grid_serializer">
+            <arguments>
+                <argument name="grid_block" xsi:type="string">csproduct.edit.tab.customerproduct</argument>
+                <argument name="callback" xsi:type="string">getSelectedProducts</argument>
+                <argument name="input_element_name" xsi:type="string">customerproduct_ids</argument>
+
+				<argument name="reload_param_name" xsi:type="string">cs_selected_products</argument>
+            </arguments>
+        </block>
+		
+		<block class="Magento\Framework\View\Element\Template" name="csgp_enable_grid" template="Mconnect_Csproduct::csproduct/csgproduct.phtml"/>
+		
+		<block class="Mconnect\Csproduct\Block\Adminhtml\Product\Edit\Tab\Customerproductgroup" name="csproduct.edit.tab.customerproductgroup"/>
+		<block class="Magento\Backend\Block\Widget\Grid\Serializer" name="customergroupproduct_grid_serializer">
+            <arguments>
+                <argument name="grid_block" xsi:type="string">csproduct.edit.tab.customerproductgroup</argument>
+                <argument name="callback" xsi:type="string">getSelectedProducts</argument>
+                <argument name="input_element_name" xsi:type="string">customergroupproduct_ids</argument>
+                <argument name="reload_param_name" xsi:type="string">csg_selected_products</argument>
+            </arguments>
+        </block>
+		
+		<block class="Magento\Framework\View\Element\Template" name="mcs_grid_scriptjs" template="Mconnect_Csproduct::csproduct/scriptjs.phtml"/>
+		
+    </container>
+</layout>

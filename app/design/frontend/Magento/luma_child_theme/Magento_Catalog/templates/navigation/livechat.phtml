@@ -1,0 +1,11 @@
+<script> 
+(function (o, c, t, a, d, e, s, k) { o.octadesk = o.octadesk || {}; s = c.getElementsByTagName("body")[0]; k = c.createElement("script"); k.async = 1; k.src = t + '/' + a + '?showButton=' + d + '&openOnMessage=' + e; s.appendChild(k); })(window, document, 'https://chat.octadesk.services/api/widget', 'printbagembalagens', true, true); </script><script>
+//para identificar seus usuários você deve chamar esse método passando o nome e o email do usuário e opcionalmente informar o id de seu chat
+//lembrando que isso é apenas um modelo teste. Você deve chamar esse método em seu site para efetuar o login. Você pode autenticar seu usuário em qualquer momento no fluxo do seu site.
+function logar_chat(usuario) {
+octadesk.chat.login({
+name: usuario.name, // nome do seu usuário
+email: usuario.email // email do seu usuário
+});
+};
+</script>

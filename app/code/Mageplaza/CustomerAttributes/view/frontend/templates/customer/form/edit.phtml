@@ -1,0 +1,41 @@
+<?php
+/**
+ * Mageplaza
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the mageplaza.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.mageplaza.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Mageplaza
+ * @package     Mageplaza_CustomerAttributes
+ * @copyright   Copyright (c) Mageplaza (https://www.mageplaza.com/)
+ * @license     https://www.mageplaza.com/LICENSE.txt
+ */
+
+/* @var $block \Magento\Customer\Block\Form\Edit */
+?>
+<?php $userDefinedAttributes = $block->getLayout()->getBlock('customer_form_user_attributes'); ?>
+<?php if ($userDefinedAttributes && count($userDefinedAttributes->getUserDefinedAttributes())) : ?>
+    <?php $userDefinedAttributes->setEntityType('customer'); ?>
+    <?php $block->restoreSessionData($userDefinedAttributes->getMetadataForm()); ?>
+    <fieldset class="fieldset customer-attributes-container">
+        <legend class="legend customer-attributes"><span><?= $block->escapeHtml(__('Additional Information')) ?></span></legend>
+        <?= $userDefinedAttributes->toHtml() ?>
+    </fieldset>
+
+    <script type="text/javascript">
+        require(['jquery'], function ($) {
+            $('.customer-attributes-container').insertAfter($('.fieldset.password'));
+            $('.customer-attributes-container .mp-attribute-visual-required').bind('DOMSubtreeModified', function(){
+               $(this).css({'height':'0.5px','opacity':'0','display':'block'});
+            });
+        });
+    </script>
+<?php endif; ?>

@@ -1,0 +1,19 @@
+.csp-entry-edit-head{
+	background: #514943;
+}
+.csp-entry-edit-head h4{
+	color: #ffffff !important;
+	padding:10px;
+	font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-size: 12px;
+	font-weight: 600;
+	line-height: 1.36;
+}
+.csp-followproductsfromgroup{
+	border: 1px solid #d6d6d6;
+	margin-bottom: 20px;
+}
+.csp-followproductsfromgroup .admin__fieldset {
+    padding-bottom: 2rem;
+    padding-top: 1rem;
+}

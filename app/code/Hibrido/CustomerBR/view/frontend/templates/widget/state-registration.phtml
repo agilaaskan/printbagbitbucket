@@ -1,0 +1,18 @@
+<?php
+/**
+ * Copyright © Hibrido. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+use Hibrido\CustomerBR\Block\Widget\StateRegistration;
+use Magento\Framework\Escaper;
+
+/** @var StateRegistration $block */
+?>
+
+<div class="field field-hb_state_registration required">
+    <label for="hb_state_registration" class="label"><span><?= __('State Registration'); ?></span></label>
+    <div class="control">
+        <input type="text" name="hb_state_registration" id="hb_state_registration" class="input-text" value="<?= $block->escapeHtmlAttr($block->getHbStateRegistration()); ?>">
+    </div>
+</div>

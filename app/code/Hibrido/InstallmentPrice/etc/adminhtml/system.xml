@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Hibrido. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+	<system>
+        <section id="catalog">
+			<group id="installment" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10" translate="label">
+                <label>Installment Price</label>
+                <field id="interest_rate_initial" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10" translate="label" type="text">
+                    <label>Interest Rate Initial (%)</label>
+                    <comment/>
+                </field>
+                <field id="interest_rate_incremental" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="20" translate="label" type="text">
+                    <label>Interest Rate Incremental (%)</label>
+                    <comment/>
+                </field>
+                <field id="number" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="30" translate="label" type="text">
+	                <label>Number</label>
+	                <comment/>
+                </field>
+                 <field id="max_without_interest" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="40" translate="label" type="text">
+                    <label>Max Without Interest</label>
+                    <comment/>
+                </field>
+                <field id="min_quota" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="45" translate="label" type="text">
+                    <label>Min Quota</label>
+                    <comment/>
+                </field>
+                <field id="list_is_enabled" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="50" translate="label" type="select">
+		            <label>Is Enabled on Listing?</label>
+		            <comment/>
+		            <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+		        </field>
+                <field id="list_show_only_last" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="60" translate="label" type="select">
+		            <label>Show only last on Listing?</label>
+		            <comment/>
+		            <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+		        </field>
+                <field id="product_is_enabled" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="50" translate="label" type="select">
+		            <label>Is Enabled on Product page?</label>
+		            <comment/>
+		            <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+		        </field>
+                <!--             New product show field with more options (all, only last or both)   -->
+                <field id="product_show_only_last"
+                       translate="label"
+                       type="select"
+                       sortOrder="60"
+                       showInDefault="1"
+                       showInWebsite="1"
+                       showInStore="1">
+                    <label>Show only last, all or both on Product Page?</label>
+                    <source_model>Hibrido\InstallmentPrice\Model\Config\Source\Custom</source_model>
+                </field>
+            </group>
+        </section>
+	</system>
+</config>

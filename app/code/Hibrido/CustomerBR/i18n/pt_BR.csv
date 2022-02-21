@@ -1,0 +1,24 @@
+"Natural Person","Pessoa Física"
+"Legal Person","Pessoa Jurídica"
+"Person Type","Tipo de pessoa"
+"Tax/VAT Number","CPF/CNPJ"
+"State Registration","Inscrição estadual"
+Country,"País"
+"State/Province","Estado"
+"Zip/Postal Code","CEP"
+City,Cidade
+Company,Empresa
+"First Name","Nome"
+"Last Name","Sobrenome"
+"Company Name","Razão Social"
+"Fantasy Name","Nome Fantasia"
+Acquit,Isento
+Exempt,Isento
+"Street Address","Endereço"
+Street,Logradouro
+Number,Número
+Complement,Complemento
+District,Bairro
+"Phone Number","Telefone"
+"Invalid CNPJ.","CNPJ Inválido."
+"Invalid CPF.","CPF Inválido."

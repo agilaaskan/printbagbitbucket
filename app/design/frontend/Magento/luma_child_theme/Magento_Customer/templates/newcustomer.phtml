@@ -1,0 +1,28 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+/** @var \Magento\Customer\Block\Form\Login\Info $block */
+?>
+<?php if ($block->getRegistration()->isAllowed()) : ?>
+<div class="block block-new-customer">
+    <div class="block-title">
+        <strong id="block-new-customer-heading" role="heading" aria-level="2"><?= $block->escapeHtml(__('Cadastro')) ?></strong>
+    </div>
+    <div class="block-content" aria-labelledby="block-new-customer-heading">
+        <p><?= $block->escapeHtml(__('Criar uma conta tem muitos benefícios:')) ?></p>
+        <ul>
+            <li>Visualize seu pedido e o status do envio</li>
+            <li>Acompanhe o histórico do pedido</li>
+            <li>Confira seus produtos favoritos na lista de desejos</li>
+        </ul>
+        <div class="actions-toolbar">
+            <div class="primary">
+                <a href="<?= $block->escapeUrl($block->getCreateAccountUrl()) ?>" class="action create primary"><span><?= $block->escapeHtml(__('Cadastre-se')) ?></span></a>
+            </div>
+        </div>
+    </div>
+</div>
+<?php endif; ?>

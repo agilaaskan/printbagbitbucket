@@ -1,0 +1,52 @@
+<?php
+$id=$this->getRequest()->getParam('id');		
+
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+
+
+$customer = $objectManager->create('Magento\Customer\Model\Customer')->load($id);
+		
+$_followproductsfromgroup_options = array('No', 'Yes');
+
+$_helper = $this->helper('Mconnect\Csproduct\Helper\Data');
+	
+$multiple_store = 0;
+if($multiple_store){
+?>
+<input type="hidden" name="setcsproduct" value="1"  data-form-part="customer_form" />
+<select style="display:none" name="followproductsfromgroupSelected" data-form-part="customer_form">					
+	<option value="0" selected="selected">No</option>					
+</select>	
+<?php	
+}else{
+?>
+<div class="csp-entry-edit csp-followproductsfromgroup">
+	<div class="csp-entry-edit-head">
+		<h4 class="csp-icon-head csp-title">Settings</h4>
+	</div>
+
+	<div class="admin__fieldset-wrapper-content">
+		<fieldset class="admin__fieldset">
+			<div class="admin__field">   
+				<label class="admin__field-label">
+					<span>Follow Group Products ?</span>
+				</label>
+				<div class="admin__field-control">
+				<input type="hidden" name="setcsproduct" value="1"  data-form-part="customer_form" />
+					<select class="admin__control-select csp-fgp-selected" name="followproductsfromgroupSelected" data-form-part="customer_form">
+					<?php foreach($_followproductsfromgroup_options as $k => $option){?>
+						<option value="<?php echo $k;?>" <?php if($customer->getFollowproductsfromgroup() == $k): ?> selected="selected"<?php endif; ?>><?php echo $option;?></option>
+					<?php } ?>
+					</select>
+				</div>
+			</div>
+		</fieldset>
+    </div>	
+</div>
+
+<?php  } ?>
+<div class="csp-entry-edit">
+	<div class="csp-entry-edit-head">
+		<h4 class="csp-icon-head csp-title">Customer Specific Products</h4>
+	</div>
+</div>

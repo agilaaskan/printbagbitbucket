@@ -1,0 +1,48 @@
+/**
+ * Mageplaza
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the mageplaza.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.mageplaza.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Mageplaza
+ * @package     Mageplaza_CustomerAttributes
+ * @copyright   Copyright (c) Mageplaza (https://www.mageplaza.com/)
+ * @license     https://www.mageplaza.com/LICENSE.txt
+ */
+
+.wysiwyg-editor ~ .defaultSkin * {
+    border-collapse: collapse;
+}
+
+.file-uploader-preview .preview-document:before {
+    left: 0;
+    margin-top: -3.5rem;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    z-index: 2;
+}
+
+.file-uploader-preview .preview-document:before {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-size: 7rem;
+    line-height: inherit;
+    color: #cccccc;
+    content: '\f016';
+    font-family: FontAwesome;
+    vertical-align: middle;
+    display: inline-block;
+    font-weight: normal;
+    overflow: hidden;
+    speak: none;
+    text-align: center;
+}

@@ -1,0 +1,73 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Mageplaza
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the mageplaza.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.mageplaza.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Mageplaza
+ * @package     Mageplaza_CustomerAttributes
+ * @copyright   Copyright (c) Mageplaza (https://www.mageplaza.com/)
+ * @license     https://www.mageplaza.com/LICENSE.txt
+ */
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="mageplaza_customer_attribute_save">
+        <observer name="create_customer_attribute" instance="Mageplaza\CustomerAttributes\Observer\CustomerAttributeCreate"/>
+    </event>
+    <event name="mageplaza_customer_attribute_delete">
+        <observer name="delete_customer_attribute" instance="Mageplaza\CustomerAttributes\Observer\CustomerAttributeDelete"/>
+    </event>
+    <event name="mageplaza_customer_address_attribute_save">
+        <observer name="create_customer_address_attribute" instance="Mageplaza\CustomerAttributes\Observer\CustomerAddressAttributeCreate"/>
+    </event>
+    <event name="mageplaza_customer_address_attribute_delete">
+        <observer name="delete_customer_address_attribute" instance="Mageplaza\CustomerAttributes\Observer\CustomerAddressAttributeDelete"/>
+    </event>
+
+    <event name="admin_sales_order_address_update">
+        <observer name="save_order_customer_address" instance="Mageplaza\CustomerAttributes\Observer\SalesOrderAddressAfterUpdate"/>
+    </event>
+
+    <event name="sales_quote_save_after">
+        <observer name="save_customer_attribute" instance="Mageplaza\CustomerAttributes\Observer\SalesQuoteAfterSave"/>
+    </event>
+    <event name="sales_order_save_after">
+        <observer name="save_customer_attribute" instance="Mageplaza\CustomerAttributes\Observer\SalesOrderAfterSave"/>
+    </event>
+    <event name="sales_quote_address_save_after">
+        <observer name="save_customer_address_attribute" instance="Mageplaza\CustomerAttributes\Observer\SalesQuoteAddressAfterSave"/>
+    </event>
+    <event name="sales_order_address_save_after">
+        <observer name="save_customer_addresss_attribute" instance="Mageplaza\CustomerAttributes\Observer\SalesOrderAddressAfterSave"/>
+    </event>
+
+    <event name="sales_quote_load_after">
+        <observer name="load_quote_with_custom_attribute" instance="Mageplaza\CustomerAttributes\Observer\SalesQuoteAfterLoad"/>
+    </event>
+    <event name="sales_quote_address_collection_load_after">
+        <observer name="load_quote_address_with_custom_attribute" instance="Mageplaza\CustomerAttributes\Observer\SalesQuoteAddressCollectionAfterLoad"/>
+    </event>
+
+    <event name="sales_order_load_after">
+        <observer name="load_order_with_custom_attribute" instance="Mageplaza\CustomerAttributes\Observer\SalesOrderAfterLoad"/>
+    </event>
+    <event name="sales_order_address_load_after">
+        <observer name="load_order_address_with_custom_attribute" instance="Mageplaza\CustomerAttributes\Observer\SalesOrderAddressAfterLoad"/>
+    </event>
+    <event name="sales_order_address_collection_load_after">
+        <observer name="load_order_address_collection_with_custom_attribute" instance="Mageplaza\CustomerAttributes\Observer\SalesOrderAddressCollectionAfterLoad"/>
+    </event>
+    <event name="sales_model_service_quote_submit_before">
+        <observer name="convert_quote_to_order" instance="Mageplaza\CustomerAttributes\Observer\ConvertQuoteToOrder"/>
+    </event>
+</config>

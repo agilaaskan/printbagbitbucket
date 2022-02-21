@@ -1,0 +1,115 @@
+"Edit Customer Address Attribute ""%1""","Edit Customer Address Attribute ""%1"""
+"New Customer Address Attribute","New Customer Address Attribute"
+None,None
+"Save and Continue Edit","Save and Continue Edit"
+"Save Attribute","Save Attribute"
+"Delete Attribute","Delete Attribute"
+"Edit Customer Attribute ""%1""","Edit Customer Attribute ""%1"""
+"New Customer Attribute","New Customer Attribute"
+"Advanced Attribute Properties","Advanced Attribute Properties"
+"Attribute Code","Attribute Code"
+"This is used internally. Make sure you don't use spaces or more than %1 symbols.","This is used internally. Make sure you don't use spaces or more than %1 symbols."
+"Default Value","Default Value"
+"Maximum File Size","Maximum File Size"
+"File size in bytes.","File size in bytes."
+"Allow File Formats","Allow File Formats"
+"Separated by comma(,). Example pdf,doc,zip,jpg,png,gif,jpeg","Separated by comma(,). Example pdf,doc,zip,jpg,png,gif,jpeg"
+"Input Validation","Input Validation"
+"Add to Customer Grid","Add to Customer Grid"
+"Column will be added to column options, filter options & search options of Customer Grid","Column will be added to column options, filter options & search options of Customer Grid"
+"Add to Sales Order Grid","Add to Sales Order Grid"
+"Column will be added to column options, filter options & search options of Sales Order Grid","Column will be added to column options, filter options & search options of Sales Order Grid"
+"Depend Fields","Depend Fields"
+"Select Field Depend","Select Field Depend"
+"Value Depend","Value Depend"
+"Storefront Properties","Storefront Properties"
+"Show on Storefront","Show on Storefront"
+"Customer can edit","Customer can edit"
+"Store View","Store View"
+"Customer Group","Customer Group"
+"Shown on forms","Shown on forms"
+"Sort Order","Sort Order"
+"Input Type","Input Type"
+"Attribute Information","Attribute Information"
+Properties,Properties
+"Manage Labels","Manage Labels"
+"Please select an option","Please select an option"
+"Customer Address Attributes","Customer Address Attributes"
+"You deleted the attribute.","You deleted the attribute."
+"We can't delete the attribute right now.","We can't delete the attribute right now."
+"We can't find an attribute to delete.","We can't find an attribute to delete."
+"This attribute no longer exists.","This attribute no longer exists."
+"New %1 Attribute","New %1 Attribute"
+"Customer Attributes","Customer Attributes"
+"Attribute code ""%1"" is invalid. Please use only letters (a-z), numbers (0-9) or underscore(_) in this field, first character should be a letter.","Attribute code ""%1"" is invalid. Please use only letters (a-z), numbers (0-9) or underscore(_) in this field, first character should be a letter."
+"You saved the attribute.","You saved the attribute."
+"Customer grid cannot contain more attribute that has one of these types: Text Field, Text Area, Content","Customer grid cannot contain more attribute that has one of these types: Text Field, Text Area, Content"
+"An attribute with this code already exists.","An attribute with this code already exists."
+"The value of Admin must be unique. (%1)","The value of Admin must be unique. (%1)"
+"The value of Admin scope can't be empty.","The value of Admin scope can't be empty."
+"Page not found.","Page not found."
+"File is empty.","File is empty."
+"Customer Account Create","Customer Account Create"
+"Customer Account Edit","Customer Account Edit"
+"Admin Checkout","Admin Checkout"
+"Customer Address Registration","Customer Address Registration"
+"Customer Address Edit","Customer Address Edit"
+"Frontend Checkout","Frontend Checkout"
+"Mageplaza OSC","Mageplaza OSC"
+"Text Field","Text Field"
+"Text Area","Text Area"
+Date,Date
+Yes/No,Yes/No
+Dropdown,Dropdown
+Multiple-select,Multiple-select
+"Single-select With Image","Single-select With Image"
+"Multiple Select With Image","Multiple Select With Image"
+"Media Image","Media Image"
+"Single File Attachment","Single File Attachment"
+Content,Content
+"Multiple Line","Multiple Line"
+Alphanumeric,Alphanumeric
+"Numeric Only","Numeric Only"
+"Alpha Only","Alpha Only"
+URL,URL
+Email,Email
+"Unable to create directory %1.","Unable to create directory %1."
+"Destination folder is not writable or does not exists.","Destination folder is not writable or does not exists."
+"Something went wrong while uploading file (attribute %1)","Something went wrong while uploading file (attribute %1)"
+"No such entity id!","No such entity id!"
+"%1 must be less than or equal to %2 bytes.","%1 must be less than or equal to %2 bytes."
+"No such entity with %fieldName = %fieldValue, %field2Name = %field2Value","No such entity with %fieldName = %fieldValue, %field2Name = %field2Value"
+"Decimal Number","Decimal Number"
+"Integer Number","Integer Number"
+Letters,Letters
+"Letters (a-z, A-Z) or Numbers (0-9)","Letters (a-z, A-Z) or Numbers (0-9)"
+Numbers,Numbers
+Yes,Yes
+No,No
+"All Customer Groups","All Customer Groups"
+"Manage Options (Values of Your Attribute)","Manage Options (Values of Your Attribute)"
+"Is Default","Is Default"
+Image,Image
+"Add Option","Add Option"
+"Sort Option","Sort Option"
+"Choose a color","Choose a color"
+"Upload a file","Upload a file"
+Clear,Clear
+Delete,Delete
+"The value of Admin must be unique.","The value of Admin must be unique."
+"Additional Information","Additional Information"
+"Delete File","Delete File"
+"Delete Image","Delete Image"
+Attributes,Attributes
+Customer,Customer
+"Customer Address","Customer Address"
+"Add New Attribute","Add New Attribute"
+"All Store Views","All Store Views"
+"Default Label","Default Label"
+Type,Type
+Required,Required
+"System Attribute","System Attribute"
+"Visible to Customer","Visible to Customer"
+"Customer Groups","Customer Groups"
+"Created Date","Created Date"
+Edit,Edit

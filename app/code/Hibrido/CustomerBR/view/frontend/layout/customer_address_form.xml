@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Hibrido. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <script src="Hibrido_CustomerBR::js/postcode-auto-complete.js" />
+        <script src="Hibrido_CustomerBR::js/postcode-reorder.js" />
+        <script src="Hibrido_CustomerBR::js/street-label-i18n.js" />
+        <script src="Hibrido_CustomerBR::js/street-add-validation.js" />
+    </head>
+</page>

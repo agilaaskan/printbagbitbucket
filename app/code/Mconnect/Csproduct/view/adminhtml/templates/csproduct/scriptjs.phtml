@@ -1,0 +1,84 @@
+<script>
+    require([
+        "jquery",
+ 
+    ], function($){
+		
+        $("input[name='customerproduct_ids']").attr('data-form-part','customer_form');
+		$("input[name='customergroupproduct_ids']").attr('data-form-part','customer_form');	
+		
+		
+		$(document).on('change','.csp-fgp-selected', function (event){			
+			
+			 var selectVal = $(this).find(':selected').val();
+			 
+			if(selectVal==1){
+				$('#customergroupproductGrid').show();
+				$('#csgp_head_tab').show();				
+				
+			}else{
+				
+				$('#customergroupproductGrid').hide();
+				$('#csgp_head_tab').hide();			
+			}
+				
+		});
+		
+		var selectedVal = $('.csp-fgp-selected').find(':selected').val();	
+		if(selectedVal==1){
+			$('#customergroupproductGrid').show();
+			$('#csgp_head_tab').show();				
+				
+		}else{
+				
+			$('#customergroupproductGrid').hide();
+			$('#csgp_head_tab').hide();			
+		}
+				
+				
+		 $(document).on('change','#productGrid_table input[type=checkbox]', function (event){	
+		   
+				if(this.title == "Select All")
+					{
+						if(this.checked)
+						{
+							$("tbody .input-text").each(function (el) {
+								
+								var ID = $(this).attr("id");
+								$("#"+ID).prop('disabled', false);
+																
+							});
+						}
+						else
+						{
+							$("tbody .input-text").each(function (el){							
+								var ID = $(this).attr("id");
+								$("#"+ID).prop('disabled', true);								
+							});
+						}
+					}
+					else
+					{						
+						$("#customerProductId"+this.value).prop('disabled', true);
+						if(this.checked)
+							$("#customerProductId"+this.value).prop('disabled', false);
+					}		   
+		   
+		   });
+		
+				
+		$("#productGrid_table input[type=checkbox]").each(function (event){
+			   
+			if(this.checked == false){					
+				if(!isNaN(this.value)){												
+					var ID = $(this).attr("id");								
+					if(ID)
+					{							
+						$("#customerProductId"+this.value).prop('disabled', true);
+					}
+				}
+			}
+		});
+		
+    });
+</script>

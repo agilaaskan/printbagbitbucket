@@ -1,0 +1,32 @@
+<script type="text/javascript">
+	require([
+		'jquery'
+	], function(jQuery){
+		(function($) {
+			if($('#mgs_ajaxnavigation_general_enable').length){
+				$('#mgs_ajaxnavigation_general_enable').val('0');
+				$('#mgs_ajaxnavigation_general_enable').attr('disabled', 'disabled');
+			}
+			if($('#mgs_ajaxnavigation_general_range_price').length){
+				$('#mgs_ajaxnavigation_general_range_price').val('0');
+				$('#mgs_ajaxnavigation_general_range_price').attr('disabled', 'disabled');
+			}
+			
+			if($('#mgs_ajaxnavigation_general_enable_inherit').length){
+				$('#mgs_ajaxnavigation_general_enable_inherit').click(function(){
+					setTimeout(function(){
+						$('#mgs_ajaxnavigation_general_enable').attr('disabled', 'disabled');
+					}, 5);
+				});
+			}
+			
+			if($('#mgs_ajaxnavigation_general_range_price_inherit').length){
+				$('#mgs_ajaxnavigation_general_range_price_inherit').click(function(){
+					setTimeout(function(){
+						$('#mgs_ajaxnavigation_general_range_price').attr('disabled', 'disabled');
+					}, 5);
+				});
+			}
+		})(jQuery);
+	});
+</script>

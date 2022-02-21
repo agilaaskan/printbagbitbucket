@@ -1,0 +1,87 @@
+<?php
+	$objectManager = \Magento\Framework\App\ObjectManager::getInstance();	
+	$_categoryList = $objectManager->create('Mconnect\Csproduct\Model\Config\Source\Categorylist')->toOptionArray();
+	
+	$id=$this->getRequest()->getParam('id');
+	
+	$csGroupCategoryArray=array();
+	
+	$_csGroupCategory = $objectManager->get('Mconnect\Csproduct\Model\CsgroupcategoryFactory')->create()->getCollection();
+	$csGroupCategory = $_csGroupCategory->addFieldToFilter('group_id',$id);	
+	if($csGroupCategory->getData()){
+	$categoryIds=$csGroupCategory->getColumnValues('category_ids');
+	$csGroupCategoryArray = explode(',' ,$categoryIds[0]);	
+	}
+	
+	//$noCatSelection[]=array('value'=>0, 'label'=>'NO Category Select');				
+	//$_categoryList2=(array_merge($noCatSelection,$_categoryList));
+	
+	$_helper = $this->helper('Mconnect\Csproduct\Helper\Data');
+	
+	$CustomCategoriesIds = $_helper->getConfig('mconnect_csproduct/general/cs_category');
+	$CustomCategoriesIdsArray = explode(',',$CustomCategoriesIds);
+				
+	
+	
+
+?>
+
+<div class="csp-entry-edit csp-followproductsfromgroup">
+	<div class="csp-entry-edit-head">
+		<h4 class="csp-icon-head csp-title">Group Specific Categories</h4>
+	</div>
+	
+	<fieldset class="admin__fieldset">
+		<div class="admin__field">   
+			<label class="admin__field-label">
+				<span>Specific Categories</span>
+			</label>
+			<div class="admin__field-control">	
+			<!----------------------------------->	
+				<select id="mconnect_csproduct_group_categories" name="group_categories[]" class=" select multiselect admin__control-multiselect" size="10" multiple="multiple">
+				<?php
+				
+				
+				foreach($_categoryList as $category){
+					
+					if(in_array($category['value'], $CustomCategoriesIdsArray)){					
+				
+						if(in_array($category['value'], $csGroupCategoryArray)){
+						?>
+						<option selected="selected" value="<?php echo $category['value'] ?>"><?php echo $category['label'] ?></option>
+						<?php
+						}else{				
+						?>
+						<option value="<?php echo $category['value'];?>"><?php echo $category['label'] ?></option>
+				<?php
+						}
+					}
+				}
+				?>
+				
+				</select>
+				<input type="hidden" value="1" name="group_cat_set"/>
+			<!---------------------------------->	
+			</div>
+		</div>
+	</fieldset>	
+</div>
+<!--
+<script>
+    require([
+        "jquery",
+ 
+    ], function($){
+		
+		$(document).on('click','#mconnect_csproduct_group_categories', function (event){
+			
+			var values = $(this).val();
+			if(values != null){
+				$('#group_cat_data').val(values);
+			}		
+		
+		
+		});
+    });
+</script>
+-->

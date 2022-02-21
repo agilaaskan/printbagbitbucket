@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Mageplaza
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the mageplaza.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.mageplaza.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Mageplaza
+ * @package     Mageplaza_CustomerAttributes
+ * @copyright   Copyright (c) Mageplaza (https://www.mageplaza.com/)
+ * @license     https://www.mageplaza.com/LICENSE.txt
+ */
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Mageplaza\CustomerAttributes\Controller\Adminhtml\Attribute\Save">
+        <plugin name="mpca_save_visual_frontend_input" type="Mageplaza\CustomerAttributes\Controller\Adminhtml\Attribute\Plugin\Save"/>
+    </type>
+    <type name="Magento\Customer\Model\FileUploader">
+        <plugin name="mpca_upload_image" type="Mageplaza\CustomerAttributes\Model\Plugin\Customer\FileUploader"/>
+    </type>
+    <type name="Magento\Customer\Ui\Component\DataProvider">
+        <plugin name="mpca_modify_customer_grid" type="Mageplaza\CustomerAttributes\Model\Plugin\Customer\DataProvider"/>
+    </type>
+    <type name="Magento\Sales\Model\ResourceModel\Order\Grid\Collection">
+        <plugin name="mpca_modify_sales_order_grid" type="Mageplaza\CustomerAttributes\Model\Plugin\Sales\Order\Grid\Collection"/>
+    </type>
+    <type name="Magento\Sales\ViewModel\Customer\AddressFormatter">
+        <plugin name="mpca_add_default_value_to_address" type="Mageplaza\CustomerAttributes\Model\Plugin\Sales\ViewModel\AddressFormatter"/>
+    </type>
+    <type name="Magento\Sales\Block\Adminhtml\Order\Create\Form\Address">
+        <plugin name="mpca_add_default_value_to_address_form" type="Mageplaza\CustomerAttributes\Model\Plugin\Sales\Block\Form\Address"/>
+    </type>
+    <type name="Magento\Ui\Component\Listing\Columns">
+        <plugin name="mpca_add_default_value_to_address_form" type="Mageplaza\CustomerAttributes\Model\Plugin\Ui\Component\SalesOrderGrid"/>
+    </type>
+    <preference for="Magento\Customer\Block\Adminhtml\Form\Element\File" type="Mageplaza\CustomerAttributes\Model\Form\Element\File"/>
+    <preference for="Magento\Customer\Block\Adminhtml\Form\Element\Image" type="Mageplaza\CustomerAttributes\Model\Form\Element\Image"/>
+</config>

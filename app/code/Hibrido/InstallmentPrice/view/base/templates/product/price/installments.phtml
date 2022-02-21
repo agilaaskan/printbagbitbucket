@@ -1,0 +1,231 @@
+<?php
+
+/**
+ * Copyright © Hibrido, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/** @var \Hibrido\InstallmentPrice\Block\InstallmentPrice $block */
+?>
+
+<?php if ($block->getIsProductListing()) : ?>
+
+    <?php
+        if (!$block->getIsEnabledOnProductList()) {
+            return;
+        }
+        ?>
+
+    <?php
+        /** @var \Magento\Catalog\Model\Product $product */
+        $product = $block->getProduct();
+        ?>
+
+    <div class="price-container price-installment_price-<?= $product->getId() ?>"></div>
+
+    <script type="text/x-magento-init">
+        {
+            ".price-installment_price-<?= $product->getId() ?>": {
+                "Hibrido_InstallmentPrice/js/installment-price-box": {
+                    "interest": {
+                        "on": true,
+                        "initialPercentage": <?= $block->getInterestInitialPercentage() ?>,
+                        "incrementalPercentage": <?= $block->getInterestIncrementalPercentage() ?>
+                    },
+                    "installment": {
+                        "number": <?= $block->getInstallmentNumber() ?>,
+                        "numberWithoutInterest": <?= $block->getInstallmentNumberWithoutInterest() ?>,
+                        "priceTemplate": "#installment-price-template-<?= $product->getId() ?>",
+                        "minQuota": <?= $block->getInstallmentMinQuota() ?>,
+                        "show": {
+                            <?php if ($block->getShowOnlyTheLastOneInProductList()) : ?>
+                                "onlyLastOne": true
+                            <?php endif ?>
+                        }
+                    },
+                    "finalPriceSelector": "[data-role=priceBox][data-product-id=<?= $product->getId() ?>].price-final_price",
+                    "priceFormat": <?php echo $block->getPriceFormatJsonConfig() ?>
+                }
+            }
+        }
+    </script>
+
+    <script id="installment-price-template-<?= $product->getId() ?>" type="text/x-magento-template">
+        <span class="price-container">
+            <span data-price-amount="<%- installment.price %>">
+                <% if (installment.qty == 1) { %>
+                    <?= __(
+                            '%qty time of %total',
+                            [
+                                'qty' => '<%- installment.qty %>',
+                                'total' => '<%- installment.formatted.total %>'
+                            ]
+                        ) ?>
+                <% } else { %>
+                    <% if (installment.hasInterest) { %>
+                        <?= __(
+                                '%qty times of %price with an interest rate of %interest_rate% per month (%interest_amount of interest) totalizing %total',
+                                [
+                                    'qty' => '<%- installment.qty %>',
+                                    'price' => '<%- installment.formatted.price %>',
+                                    'interest_rate' => '<%- installment.interestRate %>',
+                                    'interest_amount' => '<%- installment.formatted.interestAmount %>',
+                                    'total' => '<%- installment.formatted.total %>'
+                                ]
+                            ) ?>
+                    <% } else { %>
+                        <?= __(
+                                '%qty times of %price without interest totalizing %total',
+                                [
+                                    'qty' => '<%- installment.qty %>',
+                                    'price' => '<%- installment.formatted.price %>',
+                                    'total' => '<%- installment.formatted.total %>'
+                                ]
+                            ) ?>
+                    <% } %>
+                <% } %>
+            </span>
+        </span>
+    </script>
+
+<?php else : ?>
+
+    <?php
+        if (!$block->getIsEnabledOnProductPage()) {
+            return;
+        }
+        ?>
+
+    <?php if ($block->getShowOnlyTheLastOneInProductPage() == '0') : ?>
+
+        <div class="price-container price-installment_price"></div>
+        <script type="text/x-magento-init">
+            {
+                ".price-installment_price": {
+                    "Hibrido_InstallmentPrice/js/installment-price-box": {
+                        "interest": {
+                            "on": true,
+                            "initialPercentage": <?= $block->getInterestInitialPercentage() ?>,
+                            "incrementalPercentage": <?= $block->getInterestIncrementalPercentage() ?>
+                        },
+                        "installment": {
+                            "number": <?= $block->getInstallmentNumber() ?>,
+                            "numberWithoutInterest": <?= $block->getInstallmentNumberWithoutInterest() ?>,
+                            "minQuota": <?= $block->getInstallmentMinQuota() ?>,
+                            "show": {
+                                "onlyLastOne": false
+                            }
+                        }
+                    }
+                }
+            }
+        </script>
+
+    <?php elseif ($block->getShowOnlyTheLastOneInProductPage() == '1') : ?>
+
+        <div class="price-container price-installment_price"></div>
+        <script type="text/x-magento-init">
+            {
+                ".price-installment_price": {
+                    "Hibrido_InstallmentPrice/js/installment-price-box": {
+                        "interest": {
+                            "on": true,
+                            "initialPercentage": <?= $block->getInterestInitialPercentage() ?>,
+                            "incrementalPercentage": <?= $block->getInterestIncrementalPercentage() ?>
+                        },
+                        "installment": {
+                            "number": <?= $block->getInstallmentNumber() ?>,
+                            "numberWithoutInterest": <?= $block->getInstallmentNumberWithoutInterest() ?>,
+                            "minQuota": <?= $block->getInstallmentMinQuota() ?>,
+                            "show": {
+                                "onlyLastOne": true
+                            }
+                        }
+                    }
+                }
+            }
+        </script>
+    <?php elseif ($block->getShowOnlyTheLastOneInProductPage() == '2') : ?>
+        <div class="price-container price-installment_price_last"></div>
+        <div class="price-container price-installment_price_all"></div>
+        <script type="text/x-magento-init">
+            {
+                ".price-installment_price_last": {
+                    "Hibrido_InstallmentPrice/js/installment-price-box": {
+                        "interest": {
+                            "on": true,
+                            "initialPercentage": <?= $block->getInterestInitialPercentage() ?>,
+                            "incrementalPercentage": <?= $block->getInterestIncrementalPercentage() ?>
+                        },
+                        "installment": {
+                            "number": <?= $block->getInstallmentNumber() ?>,
+                            "numberWithoutInterest": <?= $block->getInstallmentNumberWithoutInterest() ?>,
+                            "minQuota": <?= $block->getInstallmentMinQuota() ?>,
+                            "show": {
+                                "onlyLastOne": true
+                            }
+                        }
+                    }
+                },
+                ".price-installment_price_all": {
+                    "Hibrido_InstallmentPrice/js/installment-price-box": {
+                        "interest": {
+                            "on": true,
+                            "initialPercentage": <?= $block->getInterestInitialPercentage() ?>,
+                            "incrementalPercentage": <?= $block->getInterestIncrementalPercentage() ?>
+                        },
+                        "installment": {
+                            "number": <?= $block->getInstallmentNumber() ?>,
+                            "numberWithoutInterest": <?= $block->getInstallmentNumberWithoutInterest() ?>,
+                            "minQuota": <?= $block->getInstallmentMinQuota() ?>,
+                            "show": {
+                                "onlyLastOne": false
+                            }
+                        }
+                    }
+                }
+            }
+        </script>
+    <?php endif ?>
+
+    <script id="installment-price-template" type="text/x-magento-template">
+        <span class="price-container">
+            <span data-price-amount="<%- installment.price %>">
+                <% if (installment.qty == 1) { %>
+                    <?= __(
+                            '%qty time of %total',
+                            [
+                                'qty' => '<%- installment.qty %>',
+                                'total' => '<%- installment.formatted.total %>'
+                            ]
+                        ) ?>
+                <% } else { %>
+                    <% if (installment.hasInterest) { %>
+                        <?= __(
+                                '%qty times of %price with an interest rate of %interest_rate% per month (%interest_amount of interest) totalizing %total',
+                                [
+                                    'qty' => '<%- installment.qty %>',
+                                    'price' => '<%- installment.formatted.price %>',
+                                    'interest_rate' => '<%- installment.interestRate %>',
+                                    'interest_amount' => '<%- installment.formatted.interestAmount %>',
+                                    'total' => '<%- installment.formatted.total %>'
+                                ]
+                            ) ?>
+                    <% } else { %>
+                        <?= __(
+                                '%qty times of %price without interest totalizing %total',
+                                [
+                                    'qty' => '<%- installment.qty %>',
+                                    'price' => '<%- installment.formatted.price %>',
+                                    'total' => '<%- installment.formatted.total %>'
+                                ]
+                            ) ?>
+                    <% } %>
+                <% } %>
+            </span>
+        </span>
+    </script>
+
+<?php endif ?>

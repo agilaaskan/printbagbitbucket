@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">	
+	<virtualType name="Magento\Catalog\Ui\DataProvider\Product\Form\Modifier\Pool" type="Magento\Ui\DataProvider\Modifier\Pool">
+		<arguments>
+			<argument name="modifiers" xsi:type="array">
+				<item name="customertab" xsi:type="array">
+					<item name="class" xsi:type="string">Mconnect\Csproduct\Ui\DataProvider\Product\Modifier\Customertab</item>
+					<item name="sortOrder" xsi:type="number">200</item>
+				</item>
+			</argument>
+		</arguments>
+	</virtualType>
+	<type name="Mconnect\Csproduct\Ui\DataProvider\Product\Modifier\Customertab">
+        <arguments>
+            <argument name="scopeName" xsi:type="string">product_form.product_form</argument>
+        </arguments>
+    </type>
+	
+
+    <virtualType name="Magento\Catalog\Ui\DataProvider\Product\Form\Modifier\Pool">
+        <arguments>
+            <argument name="modifiers" xsi:type="array">
+                <item name="custom-fieldset" xsi:type="array">
+                    <item name="class" xsi:type="string">Mconnect\Csproduct\Ui\DataProvider\Product\Modifier\Customergrouptab</item>
+                    <item name="sortOrder" xsi:type="number">10</item>
+                </item>
+            </argument>
+        </arguments>
+    </virtualType>
+	
+<preference for="Magento\Customer\Controller\Adminhtml\Group\NewAction" type="Mconnect\Csproduct\Controller\Adminhtml\Group\NewAction"/>
+
+<preference for="Magento\Customer\Block\Adminhtml\Group\Edit\Form" type="Mconnect\Csproduct\Block\Adminhtml\Group\Edit\Form"/>
+
+
+<preference for="Magento\Customer\Controller\Adminhtml\Group\Save" type="Mconnect\Csproduct\Controller\Adminhtml\Group\Save"/>
+<preference for="Magento\Sales\Block\Adminhtml\Order\Create\Search\Grid" 
+type="Mconnect\Csproduct\Block\Adminhtml\Order\Create\Search\Grid"/>
+</config>

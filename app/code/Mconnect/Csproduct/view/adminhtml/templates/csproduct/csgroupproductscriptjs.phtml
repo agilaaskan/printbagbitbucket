@@ -1,0 +1,57 @@
+<script>
+    require([
+        "jquery",
+ 
+    ], function($){      
+	   	   
+		   $(document).on('change','#GroupproductlistGrid_table input[type=checkbox]', function (event){	
+		   
+				if(this.title == "Select All")
+					{
+						if(this.checked)
+						{
+							$("tbody .input-text").each(function (el) {
+								
+								var ID = $(this).attr("id");
+								$("#"+ID).prop('disabled', false);
+																
+							});
+						}
+						else
+						{
+							$("tbody .input-text").each(function (el){	
+							
+								var ID = $(this).attr("id");
+								$("#"+ID).prop('disabled', true);
+								
+							});
+						}
+					}
+					else
+					{
+						
+						$("#groupproductId"+this.value).prop('disabled', true);
+						if(this.checked)
+							$("#groupproductId"+this.value).prop('disabled', false);
+					}
+		   
+		   
+		   });
+		   
+		   
+		   $("#GroupproductlistGrid_table input[type=checkbox]").each(function (event){
+			   
+				if(this.checked == false){						
+					if(!isNaN(this.value)){												
+						var ID = $(this).attr("id");								
+						if(ID)
+						{							
+							$("#groupproductId"+this.value).prop('disabled', true);
+						}
+					}
+				}
+			});
+			
+		
+    });
+</script>

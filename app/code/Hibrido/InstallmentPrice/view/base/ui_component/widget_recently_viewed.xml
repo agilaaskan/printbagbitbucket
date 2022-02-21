@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Copyright © Hibrido. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <columns name="widget_columns">
+        <column name="installment_price" component="Hibrido_InstallmentPrice/js/product/list/columns/installment-price" sortOrder="9999" displayArea="details-area">
+            <settings>
+                <bodyTmpl>Hibrido_InstallmentPrice/product/price/installments</bodyTmpl>
+            </settings>
+        </column>
+    </columns>
+</listing>

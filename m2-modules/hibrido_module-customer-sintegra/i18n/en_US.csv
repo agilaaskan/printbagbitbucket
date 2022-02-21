@@ -1,0 +1,10 @@
+"Invalid Sintegra Api Operation Mode.","Invalid Sintegra Api Operation Mode."
+"Required field ""%1"" not present.","Required field ""%1"" not present."
+"You can't edit your addresses if you are a Legal Person.","You can't edit your addresses if you are a Legal Person."
+"Customer does not have hb_person_type or taxvat attribute.","Customer does not have hb_person_type or taxvat attribute."
+"Region not found.","Region not found."
+"Customer ID not found in Order.","Customer ID not found in Order."
+Api,Api
+"Operation Mode","Operation Mode"
+"Sandbox Access Token","Sandbox Access Token"
+"Production Access Token","Production Access Token"
